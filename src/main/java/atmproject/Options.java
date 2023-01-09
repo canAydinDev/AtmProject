@@ -13,9 +13,11 @@ public class Options extends Account {
     boolean flag=true;
     HashMap<Integer, Integer> data=new HashMap<>();
 
+
     public void login(){
 
         System.out.println("ATM e Hosgeldiniz...");
+        int counter=0;
         do {
             data.put(12345,1234);
             data.put(23456,2345);
@@ -48,7 +50,18 @@ public class Options extends Account {
             }
 
             if (count==data.size()){
+                counter++;
                 System.out.println("Yanlis hesap numarasi veya pin girdiniz!");
+                System.out.println("Cikmak icin q 'a basiniz");
+                String exit=input.next().toLowerCase();
+                if (exit.equals("q")){
+                    flag=false;
+                }
+            }
+            if(counter==3){
+                System.out.println("3 kere hatali bilgi girilmistirve hesabiniz dondurulmustur.");
+                flag=false;
+
             }
         }while (flag);
 
